@@ -8,7 +8,8 @@ var
   fs = require("fs"),
   path = require("path"),
 
-  VIEW_CONTROLLER_PATH = '/platforms/ios/CordovaLib/Classes/CDVViewController.m',
+  OLD_VIEW_CONTROLLER_PATH = '/platforms/ios/CordovaLib/Classes/CDVViewController.m',
+  NEW_VIEW_CONTROLLER_PATH = '/plugins/io.guzz.cordova-ios10-patches/patches/CDVViewController.m',
   COMMENT_KEY = /_comment$/;
 
 
@@ -47,27 +48,25 @@ module.exports = function(context) {
     xcode = context.requireCordovaModule('xcode'),
     projectRoot = context.opts.projectRoot,
     projectName = getProjectName(projectRoot),
-    viewControllerPath = path.join(projectRoot, VIEW_CONTROLLER_PATH),
+    oldViewControllerPath = path.join(projectRoot, OLD_VIEW_CONTROLLER_PATH),
+    newViewControllerPath = path.join(projectRoot, NEW_VIEW_CONTROLLER_PATH),
     xcodeProject;
 
-  // Checking if the project files are in the right place
-  if (!fs.existsSync(viewControllerPath)) {
-    debugerror('could not find view controller file at: "' + viewControllerPath + '"');
-
+  // Check if old view controller is existing
+  if (!fs.existsSync(oldViewControllerPath)) {
+    debugerror('could not find old view controller file at: "' + oldViewControllerPath + '"');
     return;
   }
-  debug('view controller found at: ' + viewControllerPath);
+  debug('old view controller found at: ' + oldViewControllerPath);
 
-  var contents = fs.readFileSync(viewControllerPath);
-  debug(contents);
-
-
-  // fs.appendFileSync(xcconfigPath, swiftOptions.join('\n'));
-
-
-  // Writing the file again
-  // fs.writeFileSync(xcodeProjectPath, xcodeProject.writeSync(), 'utf-8');
-  // debug('file correctly fixed: ' + xcodeProjectPath);
+  // Check if new view controller is existing
+  if (!fs.existsSync(newViewControllerPath)) {
+    debugerror('could not find new view controller file at: "' + newViewControllerPath + '"');
+    return;
+  }
+  debug('new view controller found at: ' + newViewControllerPath);
+  debug('replacing old view controller with new view controller');
+  fs.createReadStream(newViewControllerPath).pipe(fs.createWriteStream(oldViewControllerPath));
 };
 
 
