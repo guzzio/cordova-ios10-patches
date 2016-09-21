@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="io.guzz.cordova-ios10-patches" version="0.0.1">
+    <name>Guzz patches for Cordova 3.9 on iOS 10</name>
+    <description>Patches for iOS 10</description>
+    <license>MIT</license>
+    <keywords>guzz,cordova</keywords>
+    <platform name="ios">
+      <hook type="after_prepare" src="scripts/ios10-patches.js" />
+    </platform>
+</plugin>
