@@ -7,5 +7,11 @@
     <keywords>guzz,cordova</keywords>
     <platform name="ios">
       <hook type="after_prepare" src="scripts/ios10-patches.js" />
+      <config-file platform="ios" target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
+        <string>Avatar Photo</string>
+      </config-file>
+      <config-file platform="ios" target="*-Info.plist" parent="NSCameraUsageDescription">
+        <string>Avatar Photo</string>
+      </config-file>
     </platform>
 </plugin>
