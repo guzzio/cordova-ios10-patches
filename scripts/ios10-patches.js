@@ -11,9 +11,7 @@ var
   OLD_VIEW_CONTROLLER_PATH = '/platforms/ios/CordovaLib/Classes/CDVViewController.m',
   NEW_VIEW_CONTROLLER_PATH = '/plugins/io.guzz.cordova-ios10-patches/patches/CDVViewController.m';
 
-module.exports = function(context) {
-  console.log(context.opts.cordova.version);
-  console.log(context.opts.cordova.platforms);
+function patchViewControllerForCordova520(context) {
   var
     projectRoot = context.opts.projectRoot,
     oldViewControllerPath = path.join(projectRoot, OLD_VIEW_CONTROLLER_PATH),
@@ -34,6 +32,14 @@ module.exports = function(context) {
   debug('new view controller found at: ' + newViewControllerPath);
   debug('replacing old view controller with new view controller');
   fs.createReadStream(newViewControllerPath).pipe(fs.createWriteStream(oldViewControllerPath));
+}
+
+module.exports = function(context) {
+  var version = context.opts.cordova.version;
+  if (version === '5.2.0') {
+    debug('patching Cordova 5.2.0 view controller for iOS 10 compatibility');
+    patchViewControllerForCordova520(context);
+  }
 };
 
 function debug(msg) {
