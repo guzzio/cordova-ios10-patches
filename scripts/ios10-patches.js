@@ -12,7 +12,7 @@ var
   NEW_VIEW_CONTROLLER_PATH = '/plugins/io.guzz.cordova-ios10-patches/patches/CDVViewController.m';
 
 module.exports = function(context) {
-  console.dir(context);
+  console.log(context);
   var
     projectRoot = context.opts.projectRoot,
     oldViewControllerPath = path.join(projectRoot, OLD_VIEW_CONTROLLER_PATH),
