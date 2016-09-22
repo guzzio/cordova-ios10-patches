@@ -11,7 +11,10 @@
         <string>Avatar</string>
       </config-file>
       <config-file platform="ios" target="*-Info.plist" parent="NSCameraUsageDescription">
-        <string>Avatar</string>
+        <string>Avatar, Video-Chat</string>
+      </config-file>
+      <config-file platform="ios" target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+        <string>Avatar, Video-Chat</string>
       </config-file>
     </platform>
 </plugin>
