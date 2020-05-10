@@ -1,0 +1,27 @@
+{
+  "name": "io.guzz.cordova-ios10-patches",
+  "version": "0.0.1",
+  "description": "Patches for iOS 10",
+  "cordova": {
+    "id": "io.guzz.cordova-ios10-patches",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guzzio/cordova-ios10-patches.git"
+  },
+  "keywords": [
+    "guzz",
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Tom Brückner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guzzio/cordova-ios10-patches/issues"
+  },
+  "homepage": "https://github.com/guzzio/cordova-ios10-patches#readme"
+}

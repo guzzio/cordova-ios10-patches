@@ -4,18 +4,15 @@
 
 console.log('running script');
 
-var
-  fs = require("fs"),
-  path = require("path"),
-
-  OLD_VIEW_CONTROLLER_PATH = '/platforms/ios/CordovaLib/Classes/CDVViewController.m',
-  NEW_VIEW_CONTROLLER_PATH = '/plugins/io.guzz.cordova-ios10-patches/patches/CDVViewController.m';
+var fs = require('fs');
+var path = require('path');
+var OLD_VIEW_CONTROLLER_PATH = '/platforms/ios/CordovaLib/Classes/CDVViewController.m';
+var NEW_VIEW_CONTROLLER_PATH = '/plugins/io.guzz.cordova-ios10-patches/patches/CDVViewController.m';
 
 function patchViewControllerForCordova520(context) {
-  var
-    projectRoot = context.opts.projectRoot,
-    oldViewControllerPath = path.join(projectRoot, OLD_VIEW_CONTROLLER_PATH),
-    newViewControllerPath = path.join(projectRoot, NEW_VIEW_CONTROLLER_PATH);
+  var projectRoot = context.opts.projectRoot;
+  var oldViewControllerPath = path.join(projectRoot, OLD_VIEW_CONTROLLER_PATH);
+  var newViewControllerPath = path.join(projectRoot, NEW_VIEW_CONTROLLER_PATH);
 
   // Check if old view controller is existing
   if (!fs.existsSync(oldViewControllerPath)) {
